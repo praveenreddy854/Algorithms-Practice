@@ -16,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Algorithms_Practice.Graphs;
 
 namespace ConsoleApp1
 {
@@ -136,7 +137,11 @@ namespace ConsoleApp1
 
             //WordSearch.Test();
 
-            GroupAnagramsClass.Test();
+            //GroupAnagramsClass.Test();
+
+            //GraphDFS.Test();
+
+            DetectCycleDFS.Test();
 
             Console.Read();
         }
