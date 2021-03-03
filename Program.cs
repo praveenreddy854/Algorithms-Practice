@@ -141,7 +141,11 @@ namespace ConsoleApp1
 
             //GraphDFS.Test();
 
-            DetectCycleDFS.Test();
+            //DetectCycleDFS.Test();
+
+            //DijstraShortestpath.Test();
+
+            DijkstraShortestPathAdjList.Test();
 
             Console.Read();
         }
