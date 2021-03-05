@@ -10,58 +10,55 @@ namespace ConsoleApp1
     {
         public static void MergeSortFunc()
         {
-            int[] a = { 2, 5, 3, 1, 8, 9 };
-            SortUtil(a);
+            int[] a = { 2, 5, 3, 1, 8, 9, -1 };
+            int[] tempArray = new int[a.Length];
+            for(int i = 0; i < a.Length; i++)
+            {
+                tempArray[i] = a[i];
+            }
+            SortUtil(a, tempArray, 0, a.Length - 1);
             Print(a);
         }
 
-        public static int[] MergeSortFunc(int[] a)
+        private static void SortUtil(int[] a, int[] tempArray, int l, int h)
         {
-            return SortUtil(a);
-        }
+            if(l < h)
+            {
+                int m = (l + h) / 2;
 
-        private static int[] SortUtil(int[] a)
-        {
-            if(a.Length <2)
-            {
-                return a;
+                SortUtil(a, tempArray, l, m);
+
+                SortUtil(a, tempArray, m + 1, h);
+
+                Merge(a, tempArray, l, h);
             }
-            int n = a.Length;
-            int[] left = new int[(int)Math.Floor((double)n / 2)];
-            int[] right = new int[(int)Math.Ceiling((double)n / 2)];
-            for(int i=0, j=0, k= 0; i<a.Length; i++)
-            {
-                if(i< (int)Math.Floor((double)n / 2))
-                {
-                    left[j] = a[i];
-                    j++;
-                }
-                else
-                {
-                    right[k] = a[i];
-                    k++;
-                }
-            }
-            int[] leftSplit = SortUtil(left);
-            int[] rightSplit = SortUtil(right);
-            Merge(a, leftSplit, rightSplit);
-            return a;
         }
-        private static void Merge(int[] a, int[] left, int[] right)
+        private static void Merge(int[] a, int[] tempArray, int l, int h)
         {
-            
-            for (int i = 0, j = 0, k = 0; i < a.Length; i++)
+            int leftEnd = (l + h) / 2;
+            int rightStart = leftEnd + 1;
+
+            int lIndex = l;
+            int rIndex = rightStart;
+
+            for(int i = l; i <= h; i++)
             {
-                if (j < left.Length && ( k >= right.Length || left[j] < right[k]))
+                if(rIndex <= h && a[lIndex] > a[rIndex])
                 {
-                    a[i] = left[j];
-                    j++;
+                    tempArray[i] = a[rIndex++];
                 }
-                else
+                else if(lIndex <= leftEnd)
                 {
-                    a[i] = right[k];
-                    k++;
+                    tempArray[i] = a[lIndex++];
                 }
+                else{
+                    tempArray[i] = a[rIndex++];
+                }
+            }
+
+            for(int i = l; i <= h; i++)
+            {
+                a[i] = tempArray[i];
             }
         }
 

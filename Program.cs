@@ -37,7 +37,7 @@ namespace ConsoleApp1
 
             //BubbleSort.BubbleSortFunc();
 
-            //MergeSort.MergeSortFunc();
+            MergeSort.MergeSortFunc();
 
             //InsertionSort.InsertionSortFunc();
 
@@ -145,7 +145,7 @@ namespace ConsoleApp1
 
             //DijstraShortestpath.Test();
 
-            DijkstraShortestPathAdjList.Test();
+            //DijkstraShortestPathAdjList.Test();
 
             Console.Read();
         }
