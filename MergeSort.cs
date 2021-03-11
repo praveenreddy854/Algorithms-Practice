@@ -10,7 +10,8 @@ namespace ConsoleApp1
     {
         public static void MergeSortFunc()
         {
-            int[] a = { 2, 5, 3, 1, 8, 9, -1 };
+            int[] a = { 4, 3, 1, 8, 9, 15, 20, 2, 5, 6, 30, 70,
+60,80,0,9,67,54,51,52,24,54,7 };
             int[] tempArray = new int[a.Length];
             for(int i = 0; i < a.Length; i++)
             {

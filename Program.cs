@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Algorithms_Practice.Graphs;
+using Algorithms_Practice.ArrayProblems;
 
 namespace ConsoleApp1
 {
@@ -37,7 +38,7 @@ namespace ConsoleApp1
 
             //BubbleSort.BubbleSortFunc();
 
-            MergeSort.MergeSortFunc();
+            //MergeSort.MergeSortFunc();
 
             //InsertionSort.InsertionSortFunc();
 
@@ -61,7 +62,7 @@ namespace ConsoleApp1
 
             //TopKFrequentElements.TopKFrequent(new int[] { 1,1,1,2,2,2,3,3,3}, 3);
 
-            //LongestSubString.LengthOfLongestSubstring("abcbb");
+            LongestSubString.Test();
 
             //ReverseInteger.Reverse(1534236469);
 
@@ -146,6 +147,8 @@ namespace ConsoleApp1
             //DijstraShortestpath.Test();
 
             //DijkstraShortestPathAdjList.Test();
+
+            //ZerosAndOnesSegregation.Test();
 
             Console.Read();
         }

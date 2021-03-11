@@ -12,30 +12,18 @@ namespace ConsoleApp1
         {
             int[] a = { 2, 5, 3, 1, 8, 9, int.MaxValue };
 
-            for(int i=1;i<a.Length-1;i++)
+            for (int i = 1; i < a.Length - 1; i++)
             {
                 int temp = a[i];
-                bool inserted = false;
-                for(int j=i-1;j>=0;j--)
+                int j = i - 1;
+                while (j >= 0 && temp < a[j])
                 {
-                    if(temp < a[j])
-                    {
-                        a[j+1] = a[j];
-                    }
-                    else
-                    {
-                        a[j + 1] = temp;
-                        inserted = true;
-                        break;
-                    }
+                    a[j + 1] = a[j--];
                 }
-                if(!inserted)
-                {
-                    a[0] = temp;
-                }
+                a[j + 1] = temp;
             }
 
-            for (int i = 0; i < a.Length-1; i++)
+            for (int i = 0; i < a.Length - 1; i++)
             {
                 Console.WriteLine(a[i]);
             }

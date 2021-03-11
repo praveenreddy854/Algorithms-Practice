@@ -21,5 +21,17 @@ namespace ConsoleApp1.StringProblems
             }
             return ans;
         }
+
+        public static void Test()
+        {
+            string a = "abcadbceb";
+            int res = LengthOfLongestSubstring(a);
+            System.Console.WriteLine("answer for string "+ a + " " +res);
+
+            a = "abcb";
+            res = LengthOfLongestSubstring(a);
+            System.Console.WriteLine("answer for string "+ a + " " +res);
+
+        }
     }
 }
