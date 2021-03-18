@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Algorithms_Practice.Graphs;
 using Algorithms_Practice.ArrayProblems;
+using Algorithms_Practice.LinkedListProblems;
 
 namespace ConsoleApp1
 {
@@ -149,6 +150,8 @@ namespace ConsoleApp1
             //DijkstraShortestPathAdjList.Test();
 
             //ZerosAndOnesSegregation.Test();
+
+            MergeTwoSortedLists.Test();
 
             Console.Read();
         }
