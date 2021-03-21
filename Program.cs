@@ -151,7 +151,11 @@ namespace ConsoleApp1
 
             //ZerosAndOnesSegregation.Test();
 
-            MergeTwoSortedLists.Test();
+            //MergeTwoSortedLists.Test();
+
+            MinCostToDest.Test();
+
+
 
             Console.Read();
         }
