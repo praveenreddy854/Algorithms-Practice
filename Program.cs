@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 using Algorithms_Practice.Graphs;
 using Algorithms_Practice.ArrayProblems;
 using Algorithms_Practice.LinkedListProblems;
+using Algorithms_Practice.TreeProblems;
+using Algorithms_Practice.StringProblems;
 
 namespace ConsoleApp1
 {
@@ -63,7 +65,7 @@ namespace ConsoleApp1
 
             //TopKFrequentElements.TopKFrequent(new int[] { 1,1,1,2,2,2,3,3,3}, 3);
 
-            LongestSubString.Test();
+            //LongestSubString.Test();
 
             //ReverseInteger.Reverse(1534236469);
 
@@ -153,7 +155,17 @@ namespace ConsoleApp1
 
             //MergeTwoSortedLists.Test();
 
-            MinCostToDest.Test();
+            //MinCostToDest.Test();
+
+            //MinPathSumClass.Test();
+
+            //BinaryTreeToLinkedList.Test();
+
+            //WordBreakClass.Test();
+
+            //WordBreak2.Test();
+
+            LongestPalidromicSubString.Test();
 
 
 

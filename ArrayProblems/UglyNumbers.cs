@@ -8,44 +8,39 @@ namespace ConsoleApp1.ArrayProblems
 {
     class UglyNumbers
     {
-        public static int NthUglyNumber(int n)
+        public int NthUglyNumber(int n)
         {
-            int i2 = 0;
-            int i3 = 0;
-            int i5 = 0;
+            List<int> uglies = new List<int>();
 
-            int nexti2 = 2;
-            int nexti3 = 3;
-            int nexti5 = 5;
+            int twoPointer = 0;
+            int threePointer = 0;
+            int fivePointer = 0;
+            uglies.Add(1);
 
-            int[] ugly = new int[n];
-            int nextUgly = 1;
-
-            ugly[0] = 1;
-
-            for(int i=1;i<n;i++)
+            while(uglies.Count <= n)
             {
-                nextUgly = Math.Min(nexti2, Math.Min(nexti3, nexti5));
+               int nextUgly = Math.Min(uglies[twoPointer] * 2, Math.Min(uglies[threePointer] * 3, uglies[fivePointer] * 5));
 
-                ugly[i] = nextUgly;
-
-                if(nextUgly == nexti2)
+               uglies.Add(nextUgly);
+            
+                if(uglies.Count == n)
                 {
-                    i2++;
-                    nexti2 = ugly[i2] * 2;
+                    return nextUgly;
                 }
-                if (nextUgly == nexti3)
-                {
-                    i3++;
-                    nexti3 = ugly[i3] * 3;
-                }
-                if (nextUgly == nexti5)
-                {
-                    i5++;
-                    nexti5 = ugly[i5] * 5;
-                }
+               if(nextUgly == uglies[twoPointer] * 2)
+               {
+                   twoPointer++;
+               }
+               else if(nextUgly == uglies[threePointer] * 3)
+               {
+                   threePointer++;
+               }
+               else if(nextUgly == uglies[fivePointer] * 5)
+               {
+                   fivePointer++;
+               }
             }
-            return nextUgly;
+            return uglies[n];
         }
     }
 }

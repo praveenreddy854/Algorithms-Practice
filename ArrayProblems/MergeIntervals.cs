@@ -1,6 +1,7 @@
 namespace ConsoleApp1.ArrayProblems
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
 
     // https://leetcode.com/problems/merge-intervals/
@@ -12,44 +13,49 @@ namespace ConsoleApp1.ArrayProblems
             {
                 return new int[0][];
             }
-            int lastStart = 0;
-            bool[] skips = new bool[intervals.Length - 1];
-            int skipsCounter = 0;
+            
+            Array.Sort(intervals, new IntervalComparer());
+            Stack<int[]> stack = new Stack<int[]>();
+            stack.Push(intervals[0]);
 
-            for(int i = 0; i < intervals.Length - 1; i++)
+            for(int i = 0; i < intervals.Length; i++)
             {
-                if(intervals[i][1] >= intervals[i+1][0])
+                int[] temp = stack.Pop();
+                
+                if(temp[1] >= intervals[i][0])
                 {
-                    if(lastStart == 0)
-                    {
-                        lastStart = intervals[i][0];
-                    }
-                    intervals[i + 1][0] = lastStart;
-                    skips[i] = true;
-                    skipsCounter++;
+                    temp[1] = Math.Max(temp[1], intervals[i][1]);
+                    stack.Push(temp);
                 }
                 else
                 {
-                    lastStart = 0;
+                    stack.Push(temp);
+                    stack.Push(intervals[i]);
                 }
             }
 
-            int[][] result = new int[intervals.Length - skipsCounter][];
+            int[][] result = new int[stack.Count][];
+            int j = 0;
 
-            for(int i = 0, j = 0; i < intervals.Length - 1; i++)
+            while(stack.Count > 0)
             {
-                if(!skips[i])
-                {
-                    result[j] = intervals[i];
-                    j++;
-                }
+                result[j] = stack.Pop();
+                j++;
             }
-
-            result[result.Length - 1] = intervals[intervals.Length - 1];
-
             return result;
-
-            
+        }
+    }
+    public class IntervalComparer: IComparer
+    {
+        int IComparer.Compare(object x, object y)
+        {
+            int[] x1 = (int[])x;
+            int[] y1 = (int[])y;
+            if(x1[0] >= y1[0])
+            {
+                return 1;
+            }
+            return -1;
         }
     }
 }

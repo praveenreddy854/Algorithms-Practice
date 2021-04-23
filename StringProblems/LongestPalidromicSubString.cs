@@ -6,40 +6,80 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.StringProblems
 {
+    //https://leetcode.com/problems/longest-palindromic-substring/solution/
     class LongestPalidromicSubString
     {
-        public static string LongestPalindrome(string s)
+        private string maxLengthPal = "";
+        int maxLength = 0;
+        public string LongestPalindrome(string s)
         {
-            int maxLength = 1;
-            int startIndex = 0;
-            for (int i = 0; i < s.Length; i++)
+            GetPalindrome(s, "");
+            return maxLengthPal;
+        }
+        private void GetPalindrome(string s, string ps)
+        {
+            if(s.Length < maxLengthPal.Length)
             {
-                int counter = 0;
-                int k = i;
-                int j = s.Length - 1;
-                for (; j > k; j--)
+                return;
+            }
+            if(s.Length < 2)
+            {
+                ps = s;
+                AssignMaxLength(ps);
+                return;
+            }
+            if(s.Length == 2)
+            {
+                if(s[0] == s[1])
                 {
-                    if (s[k] == s[j])
-                    {
-                        k++;
-                        counter = counter + 2;
-                    }
-                    
+                    ps = s;
                 }
-                if (maxLength <= counter)
+                else{
+                    ps = s[0].ToString();
+                }
+                AssignMaxLength(ps);
+                return;
+            }
+            int mid = s.Length / 2;
+            int i = mid - 1, j = mid + 1;
+            ps = s[mid].ToString();
+            while(i >= 0 || j < s.Length)
+            {
+                if(i >= 0 && j < s.Length && s[i] == s[j])
                 {
-                    if(k == j)
-                    {
-                        counter++;
-                    }
-                    maxLength = counter;
-                    startIndex = i;
-                    System.Console.WriteLine("i is"+i);
+                    ps = s[i--] + ps + s[j++];
+                }
+                else if(i >= 0 && s[i] == ps[ps.Length - 1] && s[i] == ps[ps.Length / 2])
+                {
+                    ps = s[i--] + ps;
+                }
+                else if(j < s.Length && s[j] == ps[0] && s[j] == ps[ps.Length / 2])
+                {
+                    ps = ps + s[j++];
+                }
+                else
+                {
+                    break;
                 }
             }
-            Console.WriteLine("Start index "+ startIndex);
-            Console.WriteLine("Start max "+ maxLength);
-            return s.Substring(startIndex, maxLength);
+            
+            AssignMaxLength(ps);
+            GetPalindrome(s.Substring(0, mid + 1), "");
+            GetPalindrome(s.Substring(mid, s.Length - mid), "");
+        }
+        private void AssignMaxLength(string ps)
+        {
+            maxLength = Math.Max(maxLength, ps.Length);
+             if(ps.Length == maxLength)
+             {
+                 maxLengthPal = ps;
+             }
+        }
+
+        public static void Test()
+        {
+            LongestPalidromicSubString obj = new LongestPalidromicSubString();
+            obj.LongestPalindrome("cbbd");
         }
     }
 }
