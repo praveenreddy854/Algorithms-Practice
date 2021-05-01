@@ -165,7 +165,9 @@ namespace ConsoleApp1
 
             //WordBreak2.Test();
 
-            LongestPalidromicSubString.Test();
+            //LongestPalidromicSubString.Test();
+
+            RegexMatching.Test();
 
 
 

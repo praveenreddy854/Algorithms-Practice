@@ -31,16 +31,16 @@ namespace ConsoleApp1.ArrayProblems
                {
                    twoPointer++;
                }
-               else if(nextUgly == uglies[threePointer] * 3)
+               if(nextUgly == uglies[threePointer] * 3)
                {
                    threePointer++;
                }
-               else if(nextUgly == uglies[fivePointer] * 5)
+               if(nextUgly == uglies[fivePointer] * 5)
                {
                    fivePointer++;
                }
             }
-            return uglies[n];
+            return 1;
         }
     }
 }
