@@ -33,7 +33,7 @@ namespace ConsoleApp1.ArrayProblems
         public static void Test()
         {
             SubsetsClass obj = new SubsetsClass();
-            obj.Subsets(new int[]{1,2,3});
+            obj.Subsets(new int[]{1,3,5,7,9});
         }
         
     }

@@ -21,6 +21,8 @@ using Algorithms_Practice.ArrayProblems;
 using Algorithms_Practice.LinkedListProblems;
 using Algorithms_Practice.TreeProblems;
 using Algorithms_Practice.StringProblems;
+using Algorithms_Practice.DynamicsProgrammingProblems;
+using Algorithms_Practice.BackTracking;
 
 namespace ConsoleApp1
 {
@@ -167,9 +169,28 @@ namespace ConsoleApp1
 
             //LongestPalidromicSubString.Test();
 
-            RegexMatching.Test();
+            //RegexMatching.Test();
 
+            //UniquePaths2.Test();
 
+            //UniquePaths3.Test();
+
+            //Subsets2.Test();
+
+            //CombinationalSum2.Test();
+
+            //PalindromePartitioning.Test();
+
+            //LongestIncreasingSubSequence.Test();
+
+            //TrueBoardGame.Test();
+            //FindIfThereExistsAPath.Test();
+
+            //MinimalBST.Test();
+
+            //CheckBalanced.Test();
+
+            ListOfDepths.Test();
 
             Console.Read();
         }
@@ -184,7 +205,7 @@ namespace ConsoleApp1
             {
                 int lowerBound = size - i - 1;
                 int upperBound = size + i - 1;
-                int data = i + 1;
+                int data = i + 1;   
                 bool increaseData = false;
                 for (int j = lowerBound; j <= upperBound; j++)
                 {

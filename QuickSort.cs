@@ -49,7 +49,6 @@ namespace ConsoleApp1
                     a[high] = temp1;
                 }
             }
-            int temp2 = pivot;
             a[pivotIndex] = a[high];
             a[high] = pivot;
             return high;
