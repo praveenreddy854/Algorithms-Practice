@@ -23,6 +23,7 @@ using Algorithms_Practice.TreeProblems;
 using Algorithms_Practice.StringProblems;
 using Algorithms_Practice.DynamicsProgrammingProblems;
 using Algorithms_Practice.BackTracking;
+using Algorithms_Practice.TreeProblems2;
 
 namespace ConsoleApp1
 {
@@ -190,7 +191,21 @@ namespace ConsoleApp1
 
             //CheckBalanced.Test();
 
-            ListOfDepths.Test();
+            //ListOfDepths.Test();
+
+            //MajorityElement2.Test();
+
+            //SearchMatrix2.Test();
+
+            //PopulateNextRight.Test();
+
+            //PopulateNextRight2.Test();
+
+            //RemoveKDigits.Test();
+
+            VerticalOrdering.Test();
+
+            SubtreeWithAllDeepestClass.Test();
 
             Console.Read();
         }
