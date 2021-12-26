@@ -5,7 +5,8 @@ namespace Algorithms_Practice.ArrayProblems
     //https://leetcode.com/problems/minimum-jumps-to-reach-home/
     public class MinimumJumpsToreachHome
     {
-        public int MinimumJumps(int[] forbidden, int a, int b, int x) {
+        public int MinimumJumps(int[] forbidden, int a, int b, int x) 
+        {
             
             HashSet<int> forbiddenSet = new HashSet<int>();
 
@@ -18,7 +19,8 @@ namespace Algorithms_Practice.ArrayProblems
 
             q.Enqueue(new JumpEntity(0, false, 0));
 
-            while(q.Count > 0){
+            while(q.Count > 0)
+            {
                 var currentJumpEntity = q.Dequeue();
 
                 if(currentJumpEntity.CurrentPosition == x)
@@ -43,6 +45,7 @@ namespace Algorithms_Practice.ArrayProblems
                 }
             }
             return -1;
+        }
     }
 
     public class JumpEntity
@@ -56,6 +59,6 @@ namespace Algorithms_Practice.ArrayProblems
             this.CurrentPosition = currentPosition;
             this.IsRightJump = isRightJump;
             this.MinJumps = minJumps;
-        }
+        }   
     }
 }

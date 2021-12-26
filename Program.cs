@@ -24,6 +24,11 @@ using Algorithms_Practice.StringProblems;
 using Algorithms_Practice.DynamicsProgrammingProblems;
 using Algorithms_Practice.BackTracking;
 using Algorithms_Practice.TreeProblems2;
+using Algorithms_Practice.LinkedListProblems2;
+using Algorithms_Practice.HeapProblems;
+using Algorithms_Practice.TreeProblems2;
+using Algorithms_Practice.BitManipulation;
+using Algorithms_Practice.StackProblems;
 
 namespace ConsoleApp1
 {
@@ -112,7 +117,7 @@ namespace ConsoleApp1
             //LongestPalidromicSubString.LongestPalindrome("aaaabbaa");
             //FindFruitCombos.TestWinPrize();
             //ContactsClass.Test();
-            //LargestItemAssociation.Test();
+            LargestItemAssociation.Test();
 
             //LevelOrderTraversal.Test();
 
@@ -203,11 +208,55 @@ namespace ConsoleApp1
 
             //RemoveKDigits.Test();
 
-            VerticalOrdering.Test();
+            //VerticalOrdering.Test();
 
-            SubtreeWithAllDeepestClass.Test();
+            //SubtreeWithAllDeepestClass.Test();
+
+            //MutliLevelDublyLinkedLIst.Test();
+
+            //ReOrangeString.Test();
+
+            //NumberPermutations2.Test();
+
+            //ClosestPoints.Test();
+
+            //AngramCheck.Test();
+
+            //IsCompleteTreeClass.Test();
+
+            //InsertANumberIntoAnother.Test();
+
+            //FlipBitToWin.Test();
+
+            //FlipBitsToMatchNumbers.Test();
+
+            //TowerOfHanoi.Test();
+
+
 
             Console.Read();
+        }
+
+        private int[] ReverseChunks(int[] a, int k)
+        {
+            //1,2,3, 4,5,6, 7,8,9, 10,11 // k = 3
+            // 3,2,1,6,5,4,9,8,7,11,10
+            int lastIndex = a.Length - 1;
+            for(int i = 0; i < a.Length; i = i + k)
+            {
+                int startChunk = i;
+                int endOfChunk = Math.Min(lastIndex, i + k - 1);
+
+                while(endOfChunk > startChunk)
+                {
+                    int temp = a[endOfChunk];
+                    a[endOfChunk] = a[startChunk];
+                    a[startChunk] = temp;
+                    endOfChunk--;
+                    startChunk++;
+                }
+            }
+            return a;
         }
 
         private static void NUmberTriangle()

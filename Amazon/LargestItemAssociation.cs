@@ -89,7 +89,7 @@ namespace ConsoleApp1.Amazon
         {
             LargestItemAssociation obj = new LargestItemAssociation();
             List<string> ret = obj.largestItemAssociation(itemAssociation);
-            if(ret == expected)
+            if(ret.Equals(expected))
             {
                 Console.WriteLine(true);
             }

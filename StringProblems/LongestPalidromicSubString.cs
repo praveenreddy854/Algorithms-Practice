@@ -9,77 +9,50 @@ namespace ConsoleApp1.StringProblems
     //https://leetcode.com/problems/longest-palindromic-substring/solution/
     class LongestPalidromicSubString
     {
-        private string maxLengthPal = "";
-        int maxLength = 0;
-        public string LongestPalindrome(string s)
-        {
-            GetPalindrome(s, "");
-            return maxLengthPal;
-        }
-        private void GetPalindrome(string s, string ps)
-        {
-            if(s.Length < maxLengthPal.Length)
+        public string LongestPalindrome(string s) {
+            if(s.Length == 0)
             {
-                return;
+                return string.Empty;
             }
-            if(s.Length < 2)
+
+            int maxLength = 1;
+            int startIndex  = 0;
+            HashSet<KeyValuePair<int, int>> palindromes = new HashSet<KeyValuePair<int, int>>();
+
+            for(int i = 0; i < s.Length; i++)
             {
-                ps = s;
-                AssignMaxLength(ps);
-                return;
-            }
-            if(s.Length == 2)
-            {
-                if(s[0] == s[1])
+                palindromes.Add(new KeyValuePair<int, int>(i, i));
+                if( i != 0 && s[i] == s[i - 1])
                 {
-                    ps = s;
-                }
-                else{
-                    ps = s[0].ToString();
-                }
-                AssignMaxLength(ps);
-                return;
-            }
-            int mid = s.Length / 2;
-            int i = mid - 1, j = mid + 1;
-            ps = s[mid].ToString();
-            while(i >= 0 || j < s.Length)
-            {
-                if(i >= 0 && j < s.Length && s[i] == s[j])
-                {
-                    ps = s[i--] + ps + s[j++];
-                }
-                else if(i >= 0 && s[i] == ps[ps.Length - 1] && s[i] == ps[ps.Length / 2])
-                {
-                    ps = s[i--] + ps;
-                }
-                else if(j < s.Length && s[j] == ps[0] && s[j] == ps[ps.Length / 2])
-                {
-                    ps = ps + s[j++];
-                }
-                else
-                {
-                    break;
+                    startIndex = i - 1;
+                    palindromes.Add(new KeyValuePair<int, int>(i - 1, i));
+                    maxLength = 2;
                 }
             }
-            
-            AssignMaxLength(ps);
-            GetPalindrome(s.Substring(0, mid + 1), "");
-            GetPalindrome(s.Substring(mid, s.Length - mid), "");
-        }
-        private void AssignMaxLength(string ps)
-        {
-            maxLength = Math.Max(maxLength, ps.Length);
-             if(ps.Length == maxLength)
-             {
-                 maxLengthPal = ps;
-             }
-        }
+            for(int k = 3; k <= s.Length; k++)
+            {
+                for(int i = 0; i <= s.Length - k; i++){
+                    
+                    int j = i + k - 1;
+                    System.Console.WriteLine("i {0}, j {1}, k {2}", i, j, k);
+                    if(s[i] == s[j] && palindromes.Contains(new KeyValuePair<int, int>(i + 1, j - 1)))
+                    {
+                        palindromes.Add(new KeyValuePair<int, int>(j ,i));
+                        if(maxLength < k)
+                        {
+                            maxLength = k;
+                            startIndex = i;
+                        }
+                    }
+                }
+            }
+            return s.Substring(startIndex, maxLength);
+    }
 
         public static void Test()
         {
             LongestPalidromicSubString obj = new LongestPalidromicSubString();
-            obj.LongestPalindrome("cbbd");
+            obj.LongestPalindrome("aaaaa");
         }
     }
 }

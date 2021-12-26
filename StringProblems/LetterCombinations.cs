@@ -3,9 +3,17 @@ namespace ConsoleApp1.StringProblems
     // https://leetcode.com/problems/letter-combinations-of-a-phone-number/
     using System.Collections.Generic;
     using System;
+    using System.Text;
+
     public class LetterCombinations
     {
+        IList<string> ans;
         public IList<string> GetLetterCombinations(string digits) {
+
+            if(string.IsNullOrEmpty(digits))
+            {
+                return null;
+            }
             Dictionary<char, IList<string>> dict = new Dictionary<char, IList<string>>();
             dict.Add('2', new List<string> {"a", "b", "c"});
             dict.Add('3', new List<string> {"d", "e", "f"});
@@ -16,10 +24,38 @@ namespace ConsoleApp1.StringProblems
             dict.Add('8', new List<string> {"t", "u", "v"});
             dict.Add('9', new List<string> {"w", "x", "y", "z"});
 
-            return GetLetterCombinationsHelper(digits, dict);
+            ans = new List<string>();
+
+            return GetLetterCombinationsHelper2(digits, dict, new StringBuilder(), digits.Length);
 
 
         }
+         private IList<string> GetLetterCombinationsHelper2(string digits, IDictionary<char, IList<string>> dict, StringBuilder combination, int length)
+         {
+             if(combination.Length == length)
+             {
+                 Console.WriteLine(combination);
+                 ans.Add(new String(combination.ToString()));
+                 return ans;
+             }
+             if(string.IsNullOrWhiteSpace(digits))
+             {
+                 return ans;
+             }
+             
+             char digit = digits[0];
+
+             string newDigits = digits.Substring(1, digits.Length - 1);
+             System.Console.WriteLine("New digit" +newDigits);
+
+             foreach(string aplhabet in dict[digit])
+             {
+                 combination.Append(aplhabet);
+                 GetLetterCombinationsHelper2(newDigits, dict, combination, length);
+                 combination.Remove(combination.Length - 1, 1);
+             }
+             return ans;
+         }
 
          public IList<string> GetLetterCombinationsHelper(string digits, Dictionary<char, IList<string>> dict) {
 

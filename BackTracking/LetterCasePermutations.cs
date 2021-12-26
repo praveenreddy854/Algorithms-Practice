@@ -24,7 +24,7 @@ namespace Algorithms_Practice.BackTracking
             char currentLetter = s[index];
             LetterCasePermutationHelper(s, index + 1, transformedString.Append(currentLetter));
             transformedString.Remove(transformedString.Length - 1, 1);
-
+            
             if(!int.TryParse(currentLetter.ToString(), out int temp))
             {
                 LetterCasePermutationHelper(s, index + 1, transformedString.Append(TransformCase(currentLetter.ToString())));

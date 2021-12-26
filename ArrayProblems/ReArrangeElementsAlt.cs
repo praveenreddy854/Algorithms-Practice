@@ -5,34 +5,26 @@ namespace ConsoleApp1.ArrayProblems
     {
         public static void ReArrange(int[] arr, int n)
         {
-            int mid = arr[(n-1) / 2];
-            int leftIndex = (n - 2) / 2;
-             int rightIndex = leftIndex + 1;
-             int targetIndex = n - 1;
+            int m = arr[n - 1] + 1;
+            int right = n - 1;
+            int left = 0;
 
-             
-            if(n % 2 != 0)
-            {
-                mid = arr[n / 2];
-                targetIndex--;
-                rightIndex++;
+            for(int i = 0; i < n; i++) {
+                if(i % 2 == 0) {
+                    arr[i] = (arr[right] % m ) / m + arr[i];
+                    right--;
+                }
+                else
+                {
+                    arr[i] = (arr[left] % m) / m + arr[i];
+                    left++;
+                }
             }
 
-             ReArrangeUtils(arr, arr[leftIndex], arr[rightIndex], leftIndex, rightIndex, targetIndex);
-
-             arr[n - 1] = mid;
-        }
-        private static void ReArrangeUtils(int[] arr, int left, int right, int leftIndex, int rightIndex, int targetIndex)
-        {
-            leftIndex--;
-            rightIndex++;
-            if(leftIndex > -1)
+            for(int i = 0; i < n; i++)
             {
-                ReArrangeUtils(arr, arr[leftIndex], arr[rightIndex], leftIndex, rightIndex, targetIndex - 2);
+                arr[i] = (arr[i])/ m;
             }
-
-            arr[targetIndex - 1] = right;
-            arr[targetIndex] = left;
         }
 
         public static void Test()

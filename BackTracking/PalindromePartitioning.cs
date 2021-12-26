@@ -7,6 +7,7 @@ namespace Algorithms_Practice.BackTracking
     {
         IList<IList<string>> result = new List<IList<string>>();
     HashSet<string> palindromes = new HashSet<string>();
+    int counter  = 0;
         public IList<IList<string>> Partition(string s) {
             Helper(s, 0, new List<string>());
             return result;
@@ -15,6 +16,7 @@ namespace Algorithms_Practice.BackTracking
         {
             for(int i = index; i < s.Length; i++)
             {
+                System.Console.WriteLine("Counter : {0} Index : {1} i : {2}",++counter, index, i);
                 string subStr = s.Substring(index, i + 1 - index);
 
                if(IsPalindrome(subStr, 0, i - index))
@@ -28,9 +30,9 @@ namespace Algorithms_Practice.BackTracking
                 }
                 Helper(s, i + 1, list);
                 if(i == s.Length - 1)
-            {            
-                result.Add(new List<string>(list));
-            }
+                {            
+                    result.Add(new List<string>(list));
+                }
                 if(list.Count > 0)
                 {
                     list.RemoveAt(list.Count - 1);
@@ -49,7 +51,7 @@ namespace Algorithms_Practice.BackTracking
         public static void Test()
         {
             PalindromePartitioning obj = new PalindromePartitioning();
-            obj.Partition("aab");
+            obj.Partition("aaaa");
         }
     }
 }

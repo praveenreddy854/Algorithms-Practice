@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.BitManipulation
 {
-    class NumberOfOneBits
+    public class NumberOfOneBits
     {
         public int HammingWeight(uint n)
         {
